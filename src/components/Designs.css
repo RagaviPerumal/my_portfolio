@@ -1,0 +1,65 @@
+/* --- Main Designs Section --- */
+.designs-section { max-width: 1200px; margin: 0 auto; padding: 100px 2rem; }
+.designs-header { text-align: center; margin-bottom: 80px; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop'); background-size: cover; background-position: center; padding: 120px 60px; border-radius: 20px; border: 1px solid var(--border-color); }
+.designs-title { font-size: 3rem; font-weight: 700; margin-bottom: 20px; }
+.designs-quote { font-size: 1.1rem; color: var(--secondary-text-color); line-height: 1.7; max-width: 600px; margin: 0 auto; }
+.project-category { margin-bottom: 80px; }
+.category-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 40px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+
+/* --- Case Study Cards --- */
+.project-card { background-color: #0a0a0a; border-radius: 15px; border: 1px solid var(--border-color); overflow: hidden; display: flex; flex-direction: column; }
+.project-image-container { height: 550px; background-color: #050505; overflow: hidden; }
+.project-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.project-card:hover .project-image-container img { transform: scale(1.05); }
+.project-info { padding: 25px; display: flex; justify-content: space-between; align-items: center; background-color: #0a0a0a; }
+.project-category-tag { font-size: 0.9rem; color: var(--secondary-text-color); margin-bottom: 5px; }
+.project-title { font-size: 1.3rem; font-weight: 700; }
+.view-project-btn { background-color: var(--text-color); color: var(--bg-color); border: none; padding: 12px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: background-color 0.3s ease; }
+.view-project-btn:hover { background-color: #ccc; }
+.banner-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
+
+/* --- Scrolling Graphic Designs --- */
+.scrolling-graphic-container { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); overflow: hidden; padding: 20px 0; }
+.scrolling-graphic-track { display: flex; width: calc(350px * 6); animation: graphic-scroll 30s linear infinite; }
+.project-card-small { background-color: #0a0a0a; border-radius: 15px; border: 1px solid var(--border-color); overflow: hidden; width: 320px; height: 320px; margin: 0 15px; flex-shrink: 0; position: relative; cursor: pointer; }
+.project-card-small img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.project-card-small:hover img { transform: scale(1.1); }
+.card-small-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px; }
+.card-small-overlay p { font-weight: 700; font-size: 1.1rem; }
+@keyframes graphic-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- MODAL STYLES --- */
+.project-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 1200; padding: 2rem; }
+
+/* Default styles for Case Study modal */
+.project-modal-content { background-color: #111; border-radius: 15px; border: 1px solid var(--border-color); max-width: 1000px; width: 100%; height: 80vh; overflow: hidden; display: flex; position: relative; }
+.project-modal-media-container { flex: 0 0 45%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #000; padding: 20px; box-sizing: border-box; }
+.project-modal-image, .project-modal-video { max-width: 100%; max-height: 100%; height: auto; width: auto; border-radius: 10px; }
+.project-modal-details { flex: 1; padding: 40px; overflow-y: auto; }
+.project-modal-category { font-size: 0.9rem; color: var(--secondary-text-color); margin-bottom: 10px; display: block; }
+.project-modal-title { font-size: 2rem; margin-bottom: 30px; }
+.project-modal-subtitle { font-size: 1rem; font-weight: 700; margin-top: 20px; margin-bottom: 8px; color: var(--text-color); }
+.project-modal-details p { color: var(--secondary-text-color); line-height: 1.7; }
+
+/* --- THIS IS THE FIX: Styles for Graphic Design modal --- */
+.project-modal-content.is-graphic-design {
+  display: block; /* Override the 'flex' layout */
+  width: auto;   /* Let the content define the width */
+  height: auto;  /* Let the content define the height */
+  max-width: 90vw;
+  max-height: 90vh;
+  background: none;
+  border: none;
+}
+.project-modal-content.is-graphic-design .graphic-design-modal-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+}
+/* --- END OF FIX --- */
+
+.project-modal-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--secondary-text-color); cursor: pointer; transition: color 0.3s ease; }
+.project-modal-close:hover { color: var(--text-color); }
