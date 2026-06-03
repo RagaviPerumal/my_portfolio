@@ -1,0 +1,1360 @@
+/* Digital Laboratory — OS Workstation */
+.playground.lab-os {
+    padding: 7rem 5% 8rem;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    background: #06080c;
+}
+
+.lab-os-ambient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lab-os-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.4;
+}
+
+.lab-os-glow--a,
+.lab-os-glow--b,
+.lab-os-glow--gold {
+    opacity: 0.12;
+}
+
+.lab-os-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 10%, transparent 80%);
+    opacity: 0.35;
+}
+
+.lab-os-dust {
+    position: absolute;
+    inset: 0;
+}
+
+.lab-os-dust-particle {
+    position: absolute;
+    width: 3px;
+    height: 2px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 230, 255, 0.9), transparent 70%);
+    opacity: 0.22;
+    animation: labDustDrift 55s ease-in-out infinite;
+}
+
+.lab-os-dust-particle:nth-child(1) { left: 12%; top: 30%; }
+.lab-os-dust-particle:nth-child(2) { left: 78%; top: 22%; animation-delay: -10s; }
+.lab-os-dust-particle:nth-child(3) { left: 45%; top: 68%; animation-delay: -22s; }
+.lab-os-dust-particle:nth-child(4) { left: 88%; top: 55%; }
+.lab-os-dust-particle:nth-child(5) { left: 22%; top: 72%; animation-delay: -18s; }
+.lab-os-dust-particle:nth-child(6) { left: 62%; top: 18%; animation-delay: -30s; }
+.lab-os-dust-particle:nth-child(7) { left: 35%; top: 42%; }
+.lab-os-dust-particle:nth-child(8) { left: 55%; top: 82%; animation-delay: -14s; }
+
+@keyframes labDustDrift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(12px, -18px); }
+}
+
+.lab-os-header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+}
+
+.lab-os-eyebrow {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #fbbf24;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+}
+
+.lab-dashboard {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.lab-network {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.lab-network-line {
+    fill: none;
+    stroke: url(#labLineGrad);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 10;
+    opacity: 0.45;
+    animation: labNetworkFlow 24s linear infinite;
+}
+
+@keyframes labNetworkFlow {
+    to { stroke-dashoffset: -160; }
+}
+
+.lab-workspace {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* ——— Per-lab moods ——— */
+.lab-zone {
+    position: relative;
+    padding: 2rem 2rem 2.25rem;
+    border-radius: 24px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid transparent;
+}
+
+.lab-zone::before,
+.lab-zone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.lab-zone > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ☁️ Cloud Lab — deep navy, blue glow */
+.lab-zone--cloud {
+    --lab-accent: #38bdf8;
+    --lab-accent-glow: rgba(56, 189, 248, 0.45);
+    background: linear-gradient(165deg, #0f2744 0%, #0a1628 42%, #061018 100%);
+    border-color: rgba(56, 189, 248, 0.12);
+    box-shadow: 0 24px 64px rgba(0, 20, 60, 0.45);
+}
+
+.lab-zone--cloud::before {
+    background:
+        radial-gradient(ellipse 70% 55% at 15% 25%, rgba(56, 189, 248, 0.28), transparent 58%),
+        radial-gradient(ellipse 50% 45% at 88% 75%, rgba(37, 99, 235, 0.2), transparent 55%);
+    z-index: 0;
+}
+
+.lab-zone--cloud::after {
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(180deg, black 0%, transparent 95%);
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.lab-zone--cloud .lab-zone-title {
+    color: #e8f4fc;
+}
+
+.lab-zone--cloud .lab-zone-desc {
+    color: rgba(186, 230, 253, 0.65);
+}
+
+.lab-zone--cloud .lab-zone-pill--live {
+    border-color: rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.12);
+    color: #7dd3fc;
+}
+
+.lab-zone--cloud .os-window {
+    background: rgba(8, 20, 38, 0.72);
+    border-color: rgba(56, 189, 248, 0.15);
+}
+
+.lab-zone--cloud .os-window[data-hover-glow]:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow:
+        0 32px 64px rgba(0, 0, 0, 0.4),
+        0 0 48px rgba(56, 189, 248, 0.15);
+}
+
+/* 🎨 Design Studio — warm beige, gold, paper */
+.lab-zone--design {
+    --lab-accent: #d97706;
+    --lab-accent-glow: rgba(251, 191, 36, 0.4);
+    background: linear-gradient(165deg, #f0e6d4 0%, #e8dcc8 38%, #ddd0b8 100%);
+    border-color: rgba(180, 140, 80, 0.25);
+    box-shadow: 0 24px 56px rgba(80, 60, 30, 0.12);
+}
+
+.lab-zone--design::before {
+    background:
+        radial-gradient(ellipse 65% 50% at 80% 15%, rgba(251, 191, 36, 0.35), transparent 55%),
+        radial-gradient(ellipse 55% 45% at 10% 85%, rgba(217, 119, 6, 0.15), transparent 50%);
+    z-index: 0;
+}
+
+.lab-zone--design::after {
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(120, 90, 50, 0.03) 3px,
+            rgba(120, 90, 50, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 3px,
+            rgba(120, 90, 50, 0.025) 3px,
+            rgba(120, 90, 50, 0.025) 4px
+        ),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: auto, auto, 180px 180px;
+    opacity: 0.55;
+    mix-blend-mode: multiply;
+    z-index: 0;
+}
+
+.lab-zone--design .lab-zone-title {
+    color: #3d3428;
+}
+
+.lab-zone--design .lab-zone-desc {
+    color: #6b5d4a;
+}
+
+.lab-zone--design .lab-zone-pill--creative {
+    border-color: rgba(217, 119, 6, 0.35);
+    background: rgba(251, 191, 36, 0.25);
+    color: #92400e;
+}
+
+.lab-zone--design .os-window {
+    background: rgba(255, 252, 245, 0.82);
+    border-color: rgba(180, 140, 80, 0.22);
+    box-shadow:
+        0 20px 40px rgba(100, 75, 40, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.lab-zone--design .os-window-bar {
+    background: rgba(240, 230, 210, 0.9);
+    border-bottom-color: rgba(180, 140, 80, 0.15);
+    color: #6b5d4a;
+}
+
+.lab-zone--design .os-window-name {
+    color: #3d3428;
+}
+
+.lab-zone--design .os-window-meta {
+    color: #b45309;
+}
+
+.lab-zone--design .os-window[data-hover-glow]:hover {
+    border-color: rgba(217, 119, 6, 0.4);
+    box-shadow:
+        0 28px 52px rgba(100, 75, 40, 0.15),
+        0 0 36px rgba(251, 191, 36, 0.2);
+}
+
+.lab-zone--design .lab-module-caption {
+    color: #6b5d4a;
+}
+
+.lab-zone--design .ui-slot-hint {
+    border-color: rgba(217, 119, 6, 0.35);
+    color: rgba(146, 64, 14, 0.85);
+    background: rgba(255, 252, 245, 0.5);
+}
+
+.lab-zone--design .sim-info {
+    color: #6b5d4a;
+}
+
+.lab-zone--design .lab-detail-link {
+    color: #b45309;
+}
+
+/* 🔬 Intelligent Systems — dark green, signals */
+.lab-zone--innovation {
+    --lab-accent: #34d399;
+    --lab-accent-glow: rgba(52, 211, 153, 0.45);
+    background: linear-gradient(165deg, #0f2a1f 0%, #0a1a12 45%, #061410 100%);
+    border-color: rgba(52, 211, 153, 0.12);
+    box-shadow: 0 24px 64px rgba(0, 40, 25, 0.4);
+}
+
+.lab-zone--innovation::before {
+    background:
+        radial-gradient(ellipse 60% 50% at 75% 20%, rgba(52, 211, 153, 0.22), transparent 58%),
+        radial-gradient(ellipse 55% 45% at 20% 80%, rgba(16, 185, 129, 0.15), transparent 55%);
+    animation: labSignalAmbient 6s ease-in-out infinite;
+    z-index: 0;
+}
+
+.lab-zone--innovation::after {
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.08) 0%, transparent 8%),
+        radial-gradient(circle at 50% 50%, transparent 18%, rgba(52, 211, 153, 0.04) 19%, transparent 20%),
+        radial-gradient(circle at 50% 50%, transparent 38%, rgba(52, 211, 153, 0.03) 39%, transparent 40%);
+    background-size: 100% 100%;
+    background-position: 70% 30%;
+    background-repeat: no-repeat;
+    animation: labSignalRipple 4s ease-out infinite;
+    opacity: 0.9;
+    z-index: 0;
+}
+
+@keyframes labSignalAmbient {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.75; }
+}
+
+@keyframes labSignalRipple {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.15);
+        opacity: 0;
+    }
+}
+
+.lab-zone--innovation .lab-zone-title {
+    color: #d1fae5;
+}
+
+.lab-zone--innovation .lab-zone-desc {
+    color: rgba(167, 243, 208, 0.65);
+}
+
+.lab-zone--innovation .lab-zone-pill--research {
+    border-color: rgba(52, 211, 153, 0.35);
+    background: rgba(52, 211, 153, 0.12);
+    color: #6ee7b7;
+}
+
+.lab-zone--innovation .os-window {
+    background: rgba(6, 24, 18, 0.78);
+    border-color: rgba(52, 211, 153, 0.18);
+}
+
+.lab-zone--innovation .os-window[data-hover-glow]:hover {
+    border-color: rgba(52, 211, 153, 0.4);
+    box-shadow:
+        0 32px 64px rgba(0, 0, 0, 0.4),
+        0 0 48px rgba(52, 211, 153, 0.12);
+}
+
+.lab-zone--innovation .wifi-ring {
+    border-color: rgba(52, 211, 153, 0.5);
+}
+
+/* Zone headers */
+.lab-zone-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.lab-zone-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.lab-zone-titles {
+    flex: 1;
+    min-width: 200px;
+}
+
+.lab-zone-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+}
+
+.lab-zone-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.lab-zone-pill {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.08);
+    color: #38bdf8;
+}
+
+.lab-zone-pill--creative {
+    border-color: rgba(244, 114, 182, 0.3);
+    background: rgba(244, 114, 182, 0.08);
+    color: #f9a8d4;
+}
+
+.lab-zone-pill--research {
+    border-color: rgba(52, 211, 153, 0.3);
+    background: rgba(52, 211, 153, 0.08);
+    color: #6ee7b7;
+}
+
+.lab-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+    animation: labStatusPulse 2s ease-in-out infinite;
+}
+
+@keyframes labStatusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* OS window chrome */
+.os-window {
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow:
+        0 28px 56px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.os-window[data-hover-glow]:hover {
+    border-color: rgba(56, 189, 248, 0.28);
+    box-shadow:
+        0 32px 64px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(56, 189, 248, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.os-window--cloud::before,
+.os-window--spotify::before,
+.os-window--agri::before,
+.os-window--posters::before,
+.os-window--wifi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 2;
+}
+
+.os-window--cloud { position: relative; }
+.os-window--cloud::before { background: linear-gradient(90deg, transparent, #38bdf8, transparent); }
+.os-window--spotify { position: relative; }
+.os-window--spotify::before { background: linear-gradient(90deg, transparent, #22c55e, transparent); }
+.os-window--agri { position: relative; }
+.os-window--agri::before { background: linear-gradient(90deg, transparent, #f472b6, #fbbf24, transparent); }
+.os-window--posters { position: relative; }
+.os-window--posters::before { background: linear-gradient(90deg, transparent, #fbbf24, transparent); }
+.os-window--wifi { position: relative; }
+.os-window--wifi::before { background: linear-gradient(90deg, transparent, #34d399, transparent); }
+
+.os-window-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
+.os-window-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.os-window-dots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.os-window-dots i:nth-child(1) { background: #ef4444; opacity: 0.85; }
+.os-window-dots i:nth-child(2) { background: #fbbf24; opacity: 0.85; }
+.os-window-dots i:nth-child(3) { background: #22c55e; opacity: 0.85; }
+
+.os-window-name {
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.os-window-meta {
+    color: #fbbf24;
+    opacity: 0.85;
+}
+
+.os-window-body {
+    padding: 1.25rem 1.35rem 1.5rem;
+}
+
+.lab-module-caption {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 1rem 0 0.5rem;
+}
+
+.lab-detail-link,
+.lab-figma-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    pointer-events: auto;
+    position: relative;
+    z-index: 20;
+    display: inline-block;
+    padding: 0.35rem 0;
+}
+
+.lab-figma-link {
+    display: inline-block;
+    margin: 0 0 0 0.25rem;
+    padding: 0.5rem 0.35rem;
+}
+
+.lab-zone--design .lab-figma-link {
+    color: #b45309;
+}
+
+.lab-zone--design .lab-figma-link:hover {
+    color: #92400e;
+}
+
+.lab-detail-link:hover,
+.lab-figma-link:hover {
+    opacity: 0.85;
+    color: #fbbf24;
+}
+
+.lab-controls {
+    margin-top: 1rem;
+}
+
+.ui-slot-hint {
+    margin-top: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px dashed rgba(251, 191, 36, 0.35);
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: rgba(251, 191, 36, 0.75);
+    text-align: center;
+}
+
+[data-ui-slot]:not(:empty) {
+    background-size: cover;
+    background-position: center;
+}
+
+/* ☁️ Cloud Lab */
+.cloud-topology {
+    position: relative;
+}
+
+.cloud-topo-svg {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+
+.topo-link {
+    fill: none;
+    stroke: rgba(56, 189, 248, 0.25);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 8;
+    animation: labNetworkFlow 18s linear infinite;
+}
+
+.topo-circle,
+.topo-rect {
+    fill: rgba(56, 189, 248, 0.12);
+    stroke: rgba(56, 189, 248, 0.4);
+    stroke-width: 1.5;
+}
+
+.topo-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    fill: var(--text-secondary);
+    text-anchor: middle;
+}
+
+.cloud-sim-core {
+    position: relative;
+}
+
+.cloud-sim-stage {
+    height: 240px;
+    margin-bottom: 0;
+    border-radius: 12px;
+    background: rgba(3, 7, 18, 0.65);
+}
+
+.shield-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 140px;
+    height: 140px;
+    margin: -70px 0 0 -70px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    z-index: 2;
+    pointer-events: none;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+}
+
+.shield-ring.active {
+    opacity: 1;
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), inset 0 0 20px rgba(16, 185, 129, 0.08);
+    animation: shieldPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes shieldPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+}
+
+.cloud-status-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.cloud-status {
+    padding: 0.5rem 0.65rem;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+}
+
+.cloud-status-label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.cloud-status strong {
+    color: var(--text-primary);
+    font-size: 0.75rem;
+}
+
+.topo-node--fw.active .topo-rect,
+.topo-node--fw.active .topo-circle {
+    stroke: #22c55e;
+    fill: rgba(34, 197, 94, 0.15);
+}
+
+/* 🎨 Design Studio */
+.design-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.design-agri-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    position: relative;
+    z-index: 5;
+}
+
+.thulir-figma-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 0 0.15rem;
+    position: relative;
+    z-index: 40;
+}
+
+.thulir-figma-fallback {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    color: #92400e;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    pointer-events: auto;
+    align-self: flex-start;
+    padding: 0.15rem 0.25rem;
+}
+
+.thulir-figma-fallback:hover {
+    color: #b45309;
+}
+
+.os-window--posters {
+    grid-column: 1 / -1;
+}
+
+/* Spotify UI Recreation — device preview */
+.spotify-module {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.spotify-module-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: #6b5d4a;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.spotify-device {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 0.65rem 0.65rem 0.5rem;
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border-radius: 28px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-shadow:
+        0 24px 48px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+.os-window--spotify[data-hover-glow]:hover .spotify-device {
+    transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+    box-shadow:
+        0 32px 56px rgba(0, 0, 0, 0.4),
+        0 0 32px rgba(34, 197, 94, 0.12);
+}
+
+.spotify-device-notch {
+    width: 72px;
+    height: 5px;
+    margin: 0 auto 0.5rem;
+    background: #000;
+    border-radius: 0 0 8px 8px;
+}
+
+.spotify-screen-viewport {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 390 / 844;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000;
+}
+
+.spotify-screen-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.spotify-screen-img.is-active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.spotify-screen-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-top: 0.65rem;
+    padding: 0 0.15rem;
+}
+
+.spotify-nav-btn {
+    flex: 1;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    padding: 0.4rem 0.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.55);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.spotify-nav-btn:hover {
+    background: rgba(34, 197, 94, 0.15);
+    color: #fff;
+    border-color: rgba(34, 197, 94, 0.35);
+}
+
+.spotify-nav-btn.is-active {
+    background: #1db954;
+    color: #000;
+    border-color: #1db954;
+    font-weight: 600;
+}
+
+/* Thulir / Agri E-Commerce prototype */
+.thulir-module {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.thulir-module-label,
+.thulir-module-caption {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: #6b5d4a;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.thulir-module-caption {
+    align-self: stretch;
+    line-height: 1.5;
+}
+
+.thulir-figma-btn {
+    align-self: stretch;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0.65rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #1a1208;
+    text-decoration: none;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    border: 1px solid rgba(180, 120, 40, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.25);
+    pointer-events: auto;
+    position: relative;
+    z-index: 30;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.thulir-figma-btn:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.35);
+    transform: translateY(-1px);
+}
+
+.thulir-device {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 0.65rem 0.65rem 0.75rem;
+    background: linear-gradient(145deg, #2a2520, #1a1612);
+    border-radius: 28px;
+    border: 2px solid rgba(180, 140, 80, 0.35);
+    box-shadow:
+        0 24px 48px rgba(80, 60, 30, 0.2),
+        0 0 0 1px rgba(251, 191, 36, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+.os-window--agri[data-hover-glow]:hover .thulir-device {
+    transform: translateY(-4px) rotateX(2deg) rotateY(2deg);
+    box-shadow:
+        0 32px 56px rgba(80, 60, 30, 0.25),
+        0 0 36px rgba(251, 191, 36, 0.18);
+}
+
+.thulir-device-notch {
+    width: 72px;
+    height: 5px;
+    margin: 0 auto 0.5rem;
+    background: #0f0d0a;
+    border-radius: 0 0 8px 8px;
+}
+
+.thulir-screen-viewport {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0f0f0f;
+}
+
+.thulir-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 1;
+    display: block;
+    background: #f4f7f0;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.thulir-screen-viewport.is-playing .thulir-cover {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.thulir-prototype-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    z-index: 0;
+}
+
+.thulir-play-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    background: rgba(20, 30, 15, 0.28);
+    color: #fff;
+    transition: opacity 0.35s ease, background 0.35s ease;
+}
+
+.thulir-play-overlay:hover {
+    background: rgba(45, 35, 25, 0.65);
+}
+
+.thulir-screen-viewport.is-playing .thulir-play-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.thulir-screen-viewport.is-playing:hover .thulir-play-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.thulir-play-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding-left: 3px;
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.45);
+}
+
+.thulir-play-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: #fef3c7;
+}
+
+.poster-wall {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    perspective: 800px;
+}
+
+.poster-wall--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.poster-wall--two .poster-frame {
+    aspect-ratio: auto;
+    height: auto;
+    width: 100%;
+}
+
+.poster-wall--two .poster-thumb {
+    height: auto;
+    min-height: 0;
+    background: rgba(255, 252, 245, 0.65);
+    padding: 0.35rem;
+}
+
+.poster-wall--two .poster-thumb img {
+    width: 100%;
+    height: auto;
+    max-height: min(78vh, 820px);
+    object-fit: contain;
+    object-position: center top;
+}
+
+.poster-wall--two .poster-preview {
+    display: none;
+}
+
+.poster-frame {
+    position: relative;
+    aspect-ratio: 3/4;
+    border: none;
+    padding: 0;
+    background: transparent;
+    border-radius: 8px;
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.poster-thumb {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, rgba(251, 191, 36, 0.15), rgba(56, 189, 248, 0.1));
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.4s ease;
+    overflow: hidden;
+}
+
+.poster-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.poster-frame:hover {
+    transform: translateY(-8px) rotateX(4deg) scale(1.05);
+    z-index: 5;
+}
+
+.poster-frame:hover .poster-thumb {
+    box-shadow: 0 24px 48px rgba(251, 191, 36, 0.15), 0 0 24px rgba(56, 189, 248, 0.1);
+}
+
+.poster-preview {
+    position: absolute;
+    inset: -12%;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: #fbbf24;
+}
+
+.poster-frame:hover .poster-preview,
+.poster-frame.is-focused .poster-preview {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.poster-frame.is-focused .poster-thumb {
+    filter: brightness(1.1);
+}
+
+/* 🔬 Innovation Lab */
+.wifi-lab {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 1.25rem;
+    min-height: 260px;
+}
+
+.wifi-lab-heading {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0 0 0.65rem;
+}
+
+.wifi-signal-viz {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wifi-ring {
+    position: absolute;
+    border: 2px solid rgba(52, 211, 153, 0.35);
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    animation: wifiRing 3s ease-in-out infinite;
+}
+
+.wifi-ring:nth-child(1) { width: 40px; height: 40px; }
+.wifi-ring:nth-child(2) { width: 70px; height: 70px; animation-delay: -0.4s; }
+.wifi-ring:nth-child(3) { width: 100px; height: 100px; animation-delay: -0.8s; }
+
+@keyframes wifiRing {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.06); }
+}
+
+.wifi-core {
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+.wifi-metric {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.wifi-metric strong {
+    color: #34d399;
+    font-size: 1.1rem;
+}
+
+.occ-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.occ-room {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.82rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.occ-room em {
+    font-style: normal;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+}
+
+.occ-room--active {
+    border-color: rgba(52, 211, 153, 0.35);
+    background: rgba(52, 211, 153, 0.08);
+}
+
+.occ-room--active em {
+    color: #34d399;
+}
+
+.wifi-movement-canvas {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wifi-stream {
+    height: 100px;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    mask-image: linear-gradient(180deg, black 70%, transparent);
+}
+
+.wifi-stream-line {
+    animation: streamIn 0.4s ease both;
+}
+
+@keyframes streamIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.wifi-alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-height: 88px;
+    overflow-y: auto;
+}
+
+.wifi-alert {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.65rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 6px;
+    border-left: 3px solid #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+    animation: streamIn 0.35s ease both;
+}
+
+.wifi-alert--warn {
+    border-left-color: #fbbf24;
+    background: rgba(251, 191, 36, 0.08);
+}
+
+.wifi-alert--motion {
+    border-left-color: #34d399;
+    background: rgba(52, 211, 153, 0.08);
+}
+
+.wifi-alert-ts {
+    color: var(--text-secondary);
+    margin-right: 0.4rem;
+}
+
+.light-theme .playground.lab-os {
+    background: #e8eaef;
+}
+
+.light-theme .lab-zone--cloud {
+    background: linear-gradient(165deg, #1e3a5f 0%, #152a45 50%, #0f2038 100%);
+}
+
+.light-theme .lab-zone--design {
+    background: linear-gradient(165deg, #faf6ee 0%, #f0e6d4 50%, #e5d9c4 100%);
+}
+
+.light-theme .lab-zone--innovation {
+    background: linear-gradient(165deg, #14532d 0%, #0f3d24 50%, #0a2818 100%);
+}
+
+.light-theme .lab-zone--design .os-window {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 960px) {
+    .design-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .wifi-lab {
+        grid-template-columns: 1fr;
+    }
+
+    .cloud-status-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .poster-wall:not(.poster-wall--two) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .poster-wall--two {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .poster-wall--two .poster-thumb img {
+        max-height: min(70vh, 640px);
+    }
+
+    .lab-network {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lab-os-dust-particle,
+    .lab-network-line,
+    .topo-link,
+    .flow-line,
+    .spotify-screen-img,
+    .thulir-prototype-video,
+    .wifi-ring,
+    .shield-ring.active,
+    .lab-status-dot,
+    .lab-zone--innovation::before,
+    .lab-zone--innovation::after {
+        animation: none !important;
+    }
+}

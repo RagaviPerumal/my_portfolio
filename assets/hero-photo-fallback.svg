@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 450" fill="none">
+  <rect width="360" height="450" rx="32" fill="#f8fafc"/>
+  <rect x="18" y="18" width="324" height="414" rx="26" fill="#e2e8f0" />
+  <path d="M90 142c0-48 36-88 80-88s80 40 80 88" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/> 
+  <path d="M118 340c10-50 30-84 64-84s54 34 64 84" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="145" cy="170" r="12" fill="#1e293b"/>
+  <circle cx="215" cy="170" r="12" fill="#1e293b"/>
+  <path d="M128 224c18 14 46 14 64 0" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M70 380c60-28 172-26 226 0" stroke="#334155" stroke-width="12" stroke-linecap="round" opacity="0.45"/>
+  <path d="M58 84c12-8 40-20 62-16" stroke="#1e293b" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <path d="M244 80c-10 10-28 24-44 22" stroke="#1e293b" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <text x="180" y="430" text-anchor="middle" font-family="Outfit, sans-serif" font-size="20" fill="#1e293b" opacity="0.8">Drop photo here</text>
+</svg>

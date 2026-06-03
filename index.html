@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome to my world 💛</title>
+    <meta name="description" content="Portfolio of Ragavi P, a driven problem-solver specializing in multi-cloud environments (AWS, GCP, Azure) and Python.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lab.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-circle.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/favicon-circle.png">
+    <link rel="apple-touch-icon" href="assets/favicon-circle.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Full-screen Canvas for Confetti & Particles -->
+    <canvas id="canvas-overlay"></canvas>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollBar"></div>
+    </div>
+
+    <!-- Background Tech Grid Overlay and Glowing Orbs -->
+    <div class="grid-overlay"></div>
+    <div class="noise"></div>
+    <div class="glowing-orb orb-1"></div>
+    <div class="glowing-orb orb-2"></div>
+    <div class="glowing-orb orb-3"></div>
+    
+    <header class="navbar">
+        <nav class="navbar-shell">
+            <a href="#home" class="navbar-brand">
+                <img src="assets/f5cf223e01200aab168b7de6a5a653da-removebg-preview.png" alt="Ragavi profile" class="navbar-brand-icon">
+                <span class="navbar-brand-name">ragavi p</span>
+            </a>
+            <div class="navbar-menu">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#playground" class="nav-link">Playground</a>
+                <a href="#experience" class="nav-link">Experience</a>
+            </div>
+            <a href="mailto:ragaviperumal9@gmail.com" class="navbar-resume-btn">Resume</a>
+        </nav>
+    </header>
+
+    <!-- Light/Dark Mode Toggle (Cassie-style) -->
+    <div class="mode-toggle dark-active" id="modeToggle">
+        <div class="mode-toggle-indicator"></div>
+        <button class="mode-btn" data-mode="light" aria-label="Switch to light mode"><span class="mode-icon">☀</span></button>
+        <button class="mode-btn active" data-mode="dark" aria-label="Switch to dark mode"><span class="mode-icon">☽</span></button>
+    </div>
+
+    <!-- Custom Animated Cursor (after interactive UI for correct stacking) -->
+    <div class="custom-cursor"></div>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-grid reveal">
+                <div class="hero-text">
+                    <span class="hero-pretitle">Hey there <img class="hero-peace-icon" src="assets/ChatGPT_Image_Jun_2__2026__02_02_12_PM-removebg-preview.png" alt="Peace hand sign"></span>
+                    <h1>I'm <span class="gradient-text">Ragavi</span></h1>
+                    <div class="typing-wrapper">
+                        <p class="hero-subtitle typing-text">A Backend Developer Intern with a passion for creating thoughtful digital experiences. While I spend my days working on backend systems, I also enjoy designing aesthetic posters and exploring visual storytelling through design.</p>
+                    </div>
+                </div>
+                <div class="hero-image-frame">
+                    <div class="photo-card">
+                        <img src="assets/WhatsApp Image 2026-06-01 at 4.47.26 PM.jpeg" alt="Ragavi portrait" onerror="this.onerror=null; this.src='assets/hero-photo-fallback.svg'" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-dust" aria-hidden="true">
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+            </div>
+            <div class="about-grid reveal">
+                <div class="about-text">
+                    <h2>Driven by <span class="about-innovation" aria-live="polite"><span class="about-innovation-word">Innovation.</span></span></h2>
+                    <p class="about-para">I am a computer science student at Agni College of Technology (CGPA: 8.9) with a passion for architecting scalable cloud infrastructure and developing efficient Python applications.</p>
+                    <p class="about-para">From deploying Wisecow on Kubernetes to engineering real-time DDoS mitigation systems, I thrive on solving complex backend and deployment challenges.</p>
+                    
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <h3 class="stat-number" data-target="9.14" data-decimals="2">0.00</h3>
+                            <p>Highest GPA Award</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3 class="stat-number" data-target="78" data-suffix="%">0</h3>
+                            <p>NPTEL Elite + Silver (Cloud)</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3 class="stat-number" data-target="1" data-prefix="#">0</h3>
+                            <p>Project Competition Winner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Laboratory — OS Dashboard -->
+        <section class="playground lab-os" id="playground">
+            <div class="lab-os-ambient" aria-hidden="true">
+                <div class="lab-os-glow lab-os-glow--a"></div>
+                <div class="lab-os-glow lab-os-glow--b"></div>
+                <div class="lab-os-glow lab-os-glow--gold"></div>
+                <div class="lab-os-grid"></div>
+                <div class="lab-os-dust">
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                    <span class="lab-os-dust-particle"></span>
+                </div>
+            </div>
+            <div class="section-header reveal lab-os-header">
+                <p class="lab-os-eyebrow">ragavi@lab ~ portfolio/os</p>
+                <h2>Digital Laboratory</h2>
+                <p>Explore my cloud systems, design experiments, and research projects through interactive modules.</p>
+            </div>
+
+            <div class="lab-dashboard reveal">
+                <svg class="lab-network" id="labNetwork" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="labLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="rgba(56, 189, 248, 0.05)"></stop>
+                            <stop offset="50%" stop-color="rgba(251, 191, 36, 0.4)"></stop>
+                            <stop offset="100%" stop-color="rgba(129, 140, 248, 0.05)"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="labNetworkLines"></g>
+                </svg>
+
+                <div class="lab-workspace" id="labWorkspace">
+                    <!-- ☁️ Cloud Lab -->
+                    <section class="lab-zone lab-zone--cloud" data-lab-node="cloud" id="cloudLab">
+                        <header class="lab-zone-head">
+                            <span class="lab-zone-icon" aria-hidden="true">☁️</span>
+                            <div class="lab-zone-titles">
+                                <h3 class="lab-zone-title">Cloud Lab</h3>
+                                <p class="lab-zone-desc">Live infrastructure — traffic, shields, and topology</p>
+                            </div>
+                            <span class="lab-zone-pill lab-zone-pill--live"><span class="lab-status-dot"></span> LIVE</span>
+                        </header>
+
+                        <div class="os-window os-window--cloud" data-hover-glow>
+                            <div class="os-window-bar">
+                                <span class="os-window-dots"><i></i><i></i><i></i></span>
+                                <span class="os-window-name">cloud-ddos-mitigation.sys</span>
+                                <span class="os-window-meta">INFRA / AWS</span>
+                            </div>
+                            <div class="os-window-body">
+                                <div class="cloud-topology">
+                                    <svg class="cloud-topo-svg" viewBox="0 0 520 300" aria-hidden="true">
+                                        <g class="topo-links">
+                                            <path class="topo-link" d="M260 42 L260 95"></path>
+                                            <path class="topo-link" d="M80 150 L195 135"></path>
+                                            <path class="topo-link" d="M440 150 L325 135"></path>
+                                            <path class="topo-link" d="M260 195 L260 240"></path>
+                                        </g>
+                                        <g class="topo-node topo-node--net" transform="translate(260 28)">
+                                            <circle r="18" class="topo-circle"></circle>
+                                            <text y="5" class="topo-label">Internet</text>
+                                        </g>
+                                        <g class="topo-node topo-node--fw" transform="translate(70 150)">
+                                            <rect x="-22" y="-16" width="44" height="32" rx="6" class="topo-rect"></rect>
+                                            <text y="5" class="topo-label">Firewall</text>
+                                        </g>
+                                        <g class="topo-node topo-node--mon" transform="translate(450 150)">
+                                            <rect x="-22" y="-16" width="44" height="32" rx="6" class="topo-rect"></rect>
+                                            <text y="5" class="topo-label">Grafana</text>
+                                        </g>
+                                        <g class="topo-node topo-node--log" transform="translate(260 255)">
+                                            <rect x="-28" y="-12" width="56" height="24" rx="5" class="topo-rect"></rect>
+                                            <text y="5" class="topo-label">Scapy Filter</text>
+                                        </g>
+                                    </svg>
+                                    <div class="cloud-sim-core">
+                                        <div class="simulator-display cloud-sim-stage" id="ddosSim">
+                                            <div class="server-node" id="serverNode">
+                                                <div class="server-radar"></div>
+                                                <svg class="server-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                                <span>AWS Server</span>
+                                            </div>
+                                            <div class="shield-barrier" id="shieldBarrier"></div>
+                                            <div class="shield-ring" id="shieldRing" aria-hidden="true"></div>
+                                            <canvas id="packetCanvas"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="cloud-status-row">
+                                        <div class="cloud-status" id="topoStatusNet"><span class="cloud-status-label">Ingress</span><strong>NORMAL</strong></div>
+                                        <div class="cloud-status" id="topoStatusFw"><span class="cloud-status-label">Firewall</span><strong id="fwStatusText">STANDBY</strong></div>
+                                        <div class="cloud-status"><span class="cloud-status-label">Mitigation</span><strong id="mitigationStatus" class="status-safe">SAFE</strong></div>
+                                        <div class="cloud-status"><span class="cloud-status-label">Filtered</span><strong id="filteredCount">0</strong></div>
+                                    </div>
+                                </div>
+                                <div class="simulator-actions lab-controls">
+                                    <button class="btn-primary" id="btnTriggerAttack">Simulate DDoS</button>
+                                    <button class="btn-secondary" id="btnMitigate">Activate Shield</button>
+                                </div>
+                                <p class="lab-module-caption">Real-time DDoS mitigation with Scapy filtering, AWS deployment, and Grafana traffic visualization.</p>
+                                <a href="https://github.com/samuelkcherian/Stellaron_DDoS_Protection_System" target="_blank" rel="noopener noreferrer" class="lab-detail-link" id="ddosProjectLink">View project →</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 🎨 Design Studio -->
+                    <section class="lab-zone lab-zone--design" data-lab-node="design" id="designStudio">
+                        <header class="lab-zone-head">
+                            <span class="lab-zone-icon" aria-hidden="true">🎨</span>
+                            <div class="lab-zone-titles">
+                                <h3 class="lab-zone-title">Design Studio</h3>
+                                <p class="lab-zone-desc">Creative workspace — prototypes, flows, and exhibition</p>
+                            </div>
+                            <span class="lab-zone-pill lab-zone-pill--creative"><span class="lab-status-dot"></span> ACTIVE</span>
+                        </header>
+
+                        <div class="design-workspace">
+                            <div class="os-window os-window--spotify" data-hover-glow data-lab-node="spotify">
+                                <div class="os-window-bar">
+                                    <span class="os-window-dots"><i></i><i></i><i></i></span>
+                                    <span class="os-window-name">spotify-ui.clone</span>
+                                </div>
+                                <div class="os-window-body">
+                                    <div class="spotify-module">
+                                        <p class="spotify-module-label">Spotify UI Recreation — mobile prototype</p>
+                                        <div class="spotify-device" id="spotifyDevice">
+                                            <div class="spotify-device-notch" aria-hidden="true"></div>
+                                            <div class="spotify-screen-viewport">
+                                                <img src="assets/spotify-home.png" alt="Spotify Home screen" class="spotify-screen-img is-active" data-screen="home" width="390" height="844" loading="lazy">
+                                                <img src="assets/spotify-search.png" alt="Spotify Search screen" class="spotify-screen-img" data-screen="search" width="390" height="844" loading="lazy">
+                                                <img src="assets/spotify-library.png" alt="Spotify Library screen" class="spotify-screen-img" data-screen="library" width="390" height="844" loading="lazy">
+                                            </div>
+                                            <nav class="spotify-screen-nav" aria-label="Spotify screens">
+                                                <button type="button" class="spotify-nav-btn is-active" data-screen="home">Home</button>
+                                                <button type="button" class="spotify-nav-btn" data-screen="search">Search</button>
+                                                <button type="button" class="spotify-nav-btn" data-screen="library">Library</button>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="design-agri-stack">
+                            <div class="os-window os-window--agri" data-hover-glow data-lab-node="agri">
+                                <div class="os-window-bar">
+                                    <span class="os-window-dots"><i></i><i></i><i></i></span>
+                                    <span class="os-window-name">thulir-app.fig</span>
+                                </div>
+                                <div class="os-window-body">
+                                    <div class="thulir-module">
+                                        <p class="thulir-module-label">Agri E-Commerce App — interactive prototype</p>
+                                        <div class="thulir-device" id="thulirDevice">
+                                            <div class="thulir-device-notch" aria-hidden="true"></div>
+                                            <div class="thulir-screen-viewport">
+                                                <img
+                                                    class="thulir-cover"
+                                                    id="thulirCover"
+                                                    alt="Thulir app home screen"
+                                                    width="390"
+                                                    height="844">
+                                                <video
+                                                    class="thulir-prototype-video"
+                                                    id="thulirPrototypeVideo"
+                                                    src="assets/thulir-prototype.mp4?v=143355"
+                                                    playsinline
+                                                    muted
+                                                    loop
+                                                    preload="auto"
+                                                    aria-label="Thulir agriculture app prototype walkthrough">
+                                                </video>
+                                                <button type="button" class="thulir-play-overlay" id="thulirPlayBtn" aria-label="Play prototype">
+                                                    <span class="thulir-play-icon">▶</span>
+                                                    <span class="thulir-play-text">Play prototype</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <p class="thulir-module-caption">Figma mobile flow — farmer marketplace, listings, and checkout.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="thulir-figma-row">
+                                <button
+                                    type="button"
+                                    class="thulir-figma-btn"
+                                    id="thulirFigmaBtn"
+                                    data-figma-url="https://www.figma.com/design/nIoCYvROh20pg7gQ0swzDz/thulir-App?node-id=1-9&amp;t=VeY06TpmbuoUvhcI-0"
+                                >Open Figma file →</button>
+                                <a
+                                    href="https://www.figma.com/design/nIoCYvROh20pg7gQ0swzDz/thulir-App?node-id=1-9&amp;t=VeY06TpmbuoUvhcI-0"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="thulir-figma-fallback"
+                                    id="thulirFigmaLink"
+                                >figma.com/thulir-App</a>
+                            </div>
+                            </div>
+
+                            <div class="os-window os-window--posters" data-hover-glow data-lab-node="posters">
+                                <div class="os-window-bar">
+                                    <span class="os-window-dots"><i></i><i></i><i></i></span>
+                                    <span class="os-window-name">poster-gallery.exhibit</span>
+                                </div>
+                                <div class="os-window-body">
+                                    <div class="poster-wall poster-wall--two" id="posterWall">
+                                        <button type="button" class="poster-frame" data-poster-label="TECH">
+                                            <div class="poster-thumb">
+                                                <img src="assets/TECH.png" alt="TECH poster design" width="600" height="800" loading="lazy">
+                                            </div>
+                                            <div class="poster-preview"><span>TECH</span></div>
+                                        </button>
+                                        <button type="button" class="poster-frame" data-poster-label="Department of Computer Science and Engineering">
+                                            <div class="poster-thumb">
+                                                <img src="assets/DEPARTMENT OF COMPUTER SCIENCE AMD ENGINEERING.png" alt="Department of Computer Science and Engineering poster" width="600" height="800" loading="lazy">
+                                            </div>
+                                            <div class="poster-preview"><span>Dept. of Computer Science &amp; Engineering</span></div>
+                                        </button>
+                                    </div>
+                                    <p class="lab-module-caption">Poster designs for campus tech and department branding.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Intelligent Systems -->
+                    <section class="lab-zone lab-zone--innovation" data-lab-node="innovation" id="innovationLab">
+                        <header class="lab-zone-head">
+                            <span class="lab-zone-icon" aria-hidden="true">🔬</span>
+                            <div class="lab-zone-titles">
+                                <h3 class="lab-zone-title">Intelligent Systems</h3>
+                                <p class="lab-zone-desc">Wi-Fi sensing, occupancy detection, and live signal intelligence</p>
+                            </div>
+                            <span class="lab-zone-pill lab-zone-pill--research"><span class="lab-status-dot"></span> SENSING</span>
+                        </header>
+
+                        <div class="os-window os-window--wifi" data-hover-glow>
+                            <div class="os-window-bar">
+                                <span class="os-window-dots"><i></i><i></i><i></i></span>
+                                <span class="os-window-name">wifi-home-monitor.research</span>
+                                <span class="os-window-meta">CSI / RSSI</span>
+                            </div>
+                            <div class="os-window-body">
+                                <div class="wifi-lab">
+                                    <div class="wifi-lab-col wifi-lab-col--signals">
+                                        <h4 class="wifi-lab-heading">Wi-Fi Signal Field</h4>
+                                        <div class="wifi-signal-viz" id="wifiSignalViz">
+                                            <span class="wifi-ring"></span>
+                                            <span class="wifi-ring"></span>
+                                            <span class="wifi-ring"></span>
+                                            <span class="wifi-core">📡</span>
+                                        </div>
+                                        <div class="wifi-metric"><span>RSSI</span><strong id="wifiRssi">-58</strong> dBm</div>
+                                    </div>
+                                    <div class="wifi-lab-col wifi-lab-col--occupancy">
+                                        <h4 class="wifi-lab-heading">Occupancy</h4>
+                                        <div class="occ-grid">
+                                            <div class="occ-room occ-room--active" data-room="living"><span>Living</span><em id="occLiving">Occupied</em></div>
+                                            <div class="occ-room" data-room="kitchen"><span>Kitchen</span><em id="occKitchen">Empty</em></div>
+                                            <div class="occ-room occ-room--active" data-room="bed"><span>Bedroom</span><em id="occBed">Motion</em></div>
+                                        </div>
+                                        <h4 class="wifi-lab-heading">Movement Trace</h4>
+                                        <canvas class="wifi-movement-canvas" id="wifiMovementCanvas" width="280" height="80"></canvas>
+                                    </div>
+                                    <div class="wifi-lab-col wifi-lab-col--stream">
+                                        <h4 class="wifi-lab-heading">Live Sensor Stream</h4>
+                                        <div class="wifi-stream" id="wifiStream"></div>
+                                        <h4 class="wifi-lab-heading">Alerts</h4>
+                                        <div class="wifi-alerts" id="wifiAlerts">
+                                            <div class="wifi-alert wifi-alert--info"><span class="wifi-alert-ts">--:--:--</span> System ready</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="lab-module-caption">Wi-Fi sensing based home monitoring — occupancy detection, movement visualization, and real-time alerts.</p>
+                                <div class="ui-slot-hint" data-ui-slot="wifi-research-ui">Add research dashboard screenshots here</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills" id="skills">
+            <div class="about-dust skills-dust" aria-hidden="true">
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+                <span class="about-dust-particle"></span>
+            </div>
+            <div class="section-header reveal skills-section-header">
+                <div class="skills-header-parallax" id="skillsHeaderParallax">
+                    <h2>Technical Arsenal</h2>
+                    <p>Tools and technologies I use to bring ideas to life.</p>
+                </div>
+            </div>
+            <div class="skills-container reveal">
+                <div class="skill-category skill-card-tilt">
+                    <div class="skill-card-inner">
+                        <h3>Cloud Computing</h3>
+                        <div class="tags">
+                            <span class="tag tech-tag"><span class="tech-tag-chip">AWS (EC2, S3)</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Google Cloud (GCP)</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Microsoft Azure</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Kubernetes</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Docker</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category skill-card-tilt">
+                    <div class="skill-card-inner">
+                        <h3>Programming</h3>
+                        <div class="tags">
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Python</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Java</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">C</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">C++</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category skill-card-tilt">
+                    <div class="skill-card-inner">
+                        <h3>Web & Other</h3>
+                        <div class="tags">
+                            <span class="tag tech-tag"><span class="tech-tag-chip">HTML</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">CSS</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Scapy</span></span>
+                            <span class="tag tech-tag"><span class="tech-tag-chip">Figma</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience" id="experience">
+            <div class="section-header reveal">
+                <h2>Experience & Roles</h2>
+                <p>Professional exposure and leadership.</p>
+            </div>
+            
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content timeline-card">
+                        <div class="timeline-logo-reveal" aria-hidden="true">
+                            <div class="timeline-logo-glow"></div>
+                            <div class="timeline-logo-glass">
+                                <img
+                                    src="assets/download.png"
+                                    alt=""
+                                    class="timeline-logo-img"
+                                    width="48"
+                                    height="48"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                        <div class="timeline-card-body">
+                            <span class="date">Apr 2026 — Present</span>
+                            <h3>Backend Developer Intern</h3>
+                            <h4>White Mastery Systems</h4>
+                            <p>Admin panel updates, website testing, URL checks, and responsive pages from design specs.</p>
+                            <p class="timeline-stack">HTML · CSS · JavaScript · SQL</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content timeline-card">
+                        <div class="timeline-logo-reveal" aria-hidden="true">
+                            <div class="timeline-logo-glow"></div>
+                            <div class="timeline-logo-glass timeline-logo-glass--codsoft">
+                                <img
+                                    src="assets/1685789339697-YrDL60zzRBfzM6Wr.jpg"
+                                    alt="CodSoft logo"
+                                    class="timeline-logo-img timeline-logo-img--codsoft"
+                                    width="48"
+                                    height="48"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                        <div class="timeline-card-body">
+                            <span class="date">Mar 2024 — Apr 2024</span>
+                            <h3>Artificial Intelligence Intern</h3>
+                            <h4>CodSoft</h4>
+                            <p>AI mini-projects: rule-based chatbot, Minimax Tic Tac Toe, and a movie recommendation system.</p>
+                            <p class="timeline-stack">Python · AI/ML</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="services-marquee reveal">
+                <div class="marquee-content">
+                    <span>Python • AWS • GCP • Azure • Docker • Kubernetes • Networking • UI/UX • </span>
+                    <span>Python • AWS • GCP • Azure • Docker • Kubernetes • Networking • UI/UX • </span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer reveal" id="contact">
+        <div class="site-footer-inner">
+            <div class="site-footer-intro">
+                <span class="site-footer-badge">
+                    <span class="site-footer-badge-dot" aria-hidden="true"></span>
+                    Available for work
+                </span>
+                <p class="site-footer-tagline">Let's connect!</p>
+                <h2 class="site-footer-headline">I am open for Full-Time roles.</h2>
+            </div>
+
+            <div class="site-footer-grid">
+                <div class="site-footer-col">
+                    <p class="site-footer-label">EMAIL</p>
+                    <a href="mailto:ragaviperumal9@gmail.com" class="site-footer-email">ragaviperumal9@gmail.com</a>
+                    <p class="site-footer-label site-footer-label--gap">RESUME</p>
+                    <a href="mailto:ragaviperumal9@gmail.com?subject=Resume%20Request" class="site-footer-resume-btn">
+                        <svg class="site-footer-resume-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 3v12m0 0l4-4m-4 4L8 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Download Resume
+                    </a>
+                </div>
+
+                <div class="site-footer-cluster">
+                    <div class="site-footer-col">
+                        <p class="site-footer-label">Navigate to</p>
+                        <nav class="site-footer-links" aria-label="Footer navigation">
+                            <a href="#playground">Playground</a>
+                            <a href="#about">About</a>
+                            <a href="#experience">Experience</a>
+                        </nav>
+                    </div>
+
+                    <div class="site-footer-col">
+                        <p class="site-footer-label">Social</p>
+                        <nav class="site-footer-links" aria-label="Social links">
+                            <a href="https://www.linkedin.com/in/ragavi-p" target="_blank" rel="noopener noreferrer">LinkedIn <span class="site-footer-ext" aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/RagaviPerumal" target="_blank" rel="noopener noreferrer">GitHub <span class="site-footer-ext" aria-hidden="true">↗</span></a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-footer-meta">
+                <p>&copy; 2026 Ragavi P. All Rights Reserved.</p>
+                <p class="site-footer-credit">Created with <span class="site-footer-heart" aria-label="love">♥</span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=6"></script>
+</body>
+</html>
