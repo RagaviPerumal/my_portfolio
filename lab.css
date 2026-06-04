@@ -75,6 +75,10 @@
     margin: 0 auto 3rem;
 }
 
+.lab-os-header h2 {
+    color: #fbbf24;
+}
+
 .lab-os-eyebrow {
     font-family: 'Fira Code', monospace;
     font-size: 0.8rem;
