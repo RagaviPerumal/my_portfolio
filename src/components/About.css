@@ -1,0 +1,36 @@
+.about-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 150px 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.about-content {
+  max-width: 700px;
+}
+
+.about-subtitle {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.about-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  color: var(--secondary-text-color);
+  line-height: 1.8;
+}
