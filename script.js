@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function isPointerOnToggle(clientX, clientY) {
         const rect = modeToggle.getBoundingClientRect();
-        const pad = 28;
+        const pad = 18;
         return (
             clientX >= rect.left - pad &&
             clientX <= rect.right + pad &&

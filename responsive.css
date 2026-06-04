@@ -105,8 +105,8 @@ svg {
         top: auto !important;
         margin-left: 0 !important;
         transform: none !important;
-        width: 1.35em !important;
-        height: 1.35em !important;
+        width: 2.2em !important;
+        height: 2.2em !important;
     }
 
     .hero-text h1 {
@@ -358,8 +358,16 @@ svg {
     .mode-toggle {
         right: max(1rem, env(safe-area-inset-right));
         bottom: max(1.25rem, env(safe-area-inset-bottom));
-        width: 50px;
-        height: 118px;
+        width: 40px;
+        height: 92px;
+    }
+
+    .mode-toggle-indicator {
+        height: 36px;
+    }
+
+    .mode-btn {
+        font-size: 0.82rem;
     }
 
     .glowing-orb {
@@ -475,8 +483,8 @@ svg {
     }
 
     .hero-peace-icon {
-        width: 1.35em !important;
-        height: 1.35em !important;
+        width: 2.35em !important;
+        height: 2.35em !important;
     }
 
     .hero-image-frame {
@@ -584,7 +592,15 @@ svg {
     }
 
     .mode-toggle {
-        width: 46px;
-        height: 108px;
+        width: 38px;
+        height: 84px;
+    }
+
+    .mode-toggle-indicator {
+        height: 34px;
+    }
+
+    .mode-btn {
+        font-size: 0.78rem;
     }
 }

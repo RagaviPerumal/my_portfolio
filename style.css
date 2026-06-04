@@ -325,12 +325,12 @@ a {
     display: block;
     background: rgba(17, 24, 39, 0.7);
     border: 1px solid var(--glass-border);
-    border-radius: 30px;
-    padding: 4px;
+    border-radius: 22px;
+    padding: 3px;
     z-index: 10040;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    width: 56px;
-    height: 132px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    width: 44px;
+    height: 100px;
     pointer-events: auto;
     touch-action: manipulation;
     transition: background 0.3s ease, border-color 0.3s ease;
@@ -338,12 +338,12 @@ a {
 
 .mode-toggle-indicator {
     position: absolute;
-    top: 4px;
+    top: 3px;
     left: 50%;
-    width: calc(100% - 8px);
-    height: 52px;
+    width: calc(100% - 6px);
+    height: 40px;
     background: #ffffff;
-    border-radius: 26px;
+    border-radius: 20px;
     z-index: 1;
     pointer-events: none;
     transform: translateX(-50%);
@@ -354,13 +354,13 @@ a {
     background: transparent;
     border: none;
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 0.88rem;
     font-weight: 600;
     z-index: 3;
     position: absolute;
     left: 50%;
-    width: calc(100% - 8px);
-    height: calc(50% - 4px);
+    width: calc(100% - 6px);
+    height: calc(50% - 3px);
     transform: translateX(-50%);
     pointer-events: auto;
     display: flex;
@@ -370,11 +370,11 @@ a {
 }
 
 .mode-btn[data-mode="light"] {
-    top: 4px;
+    top: 3px;
 }
 
 .mode-btn[data-mode="dark"] {
-    bottom: 4px;
+    bottom: 3px;
 }
 
 .mode-btn.active {
@@ -391,7 +391,7 @@ a {
 /* Offset the sliding indicator when dark is active */
 .mode-toggle.dark-active .mode-toggle-indicator {
     top: auto;
-    bottom: 4px;
+    bottom: 3px;
     transform: translateX(-50%);
 }
 
@@ -1061,8 +1061,8 @@ a {
         top: auto;
         margin-left: 0;
         transform: none;
-        width: 1.4em;
-        height: 1.4em;
+        width: 2.1em;
+        height: 2.1em;
     }
 
     .hero-actions {
@@ -1124,8 +1124,8 @@ a {
     }
 
     .hero-peace-icon {
-        width: 1.35em;
-        height: 1.35em;
+        width: 2.25em;
+        height: 2.25em;
     }
 
     .hero-image-frame {
@@ -2865,8 +2865,8 @@ svg {
         top: auto !important;
         margin-left: 0 !important;
         transform: none !important;
-        width: 1.35em !important;
-        height: 1.35em !important;
+        width: 2.2em !important;
+        height: 2.2em !important;
     }
 
     .hero-text h1 {
@@ -2985,6 +2985,19 @@ svg {
     .mode-toggle {
         right: max(1rem, env(safe-area-inset-right));
         bottom: max(1.25rem, env(safe-area-inset-bottom));
+        width: 40px;
+        height: 92px;
+        border-radius: 20px;
+        padding: 3px;
+    }
+
+    .mode-toggle-indicator {
+        height: 36px;
+        border-radius: 18px;
+    }
+
+    .mode-btn {
+        font-size: 0.82rem;
     }
 
     .lab-os-header {
