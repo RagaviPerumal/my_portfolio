@@ -456,52 +456,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNarrowViewport()) ensurePlaygroundVisible();
     });
 
-    /* Experience cards: logo reveal on touch (mobile only; desktop keeps :hover) */
-    function initTimelineLogoTouch() {
-        const cards = document.querySelectorAll('.timeline-content.timeline-card');
-        if (!cards.length) return;
-
-        let activeCard = null;
-
-        function clearActive() {
-            if (activeCard) activeCard.classList.remove('is-logo-active');
-            activeCard = null;
-        }
-
-        function setActive(card) {
-            if (!isNarrowViewport()) return;
-            if (activeCard && activeCard !== card) activeCard.classList.remove('is-logo-active');
-            activeCard = card;
-            card.classList.add('is-logo-active');
-        }
-
-        function onTouch(e) {
-            if (!isNarrowViewport()) return;
-            const touch = e.touches[0];
-            if (!touch) return;
-            const target = document.elementFromPoint(touch.clientX, touch.clientY);
-            const card = target && target.closest('.timeline-content.timeline-card');
-            if (card) setActive(card);
-            else clearActive();
-        }
-
-        cards.forEach((card) => {
-            card.addEventListener('touchstart', onTouch, { passive: true });
-            card.addEventListener('touchmove', onTouch, { passive: true });
-        });
-
-        document.addEventListener('touchend', () => {
-            if (isNarrowViewport()) clearActive();
-        }, { passive: true });
-        document.addEventListener('touchcancel', clearActive, { passive: true });
-
-        window.addEventListener('resize', () => {
-            if (!isNarrowViewport()) clearActive();
-        });
-    }
-
-    initTimelineLogoTouch();
-
     // Stats counter animation
     const stats = document.querySelectorAll('.stat-number');
     function animateStats(entries, observer) {

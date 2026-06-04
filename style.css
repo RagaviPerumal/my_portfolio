@@ -2989,39 +2989,29 @@ svg {
         transform: translateX(-50%) scale(1.25);
     }
 
-    /* Timeline logos: hover reveal does not work on touch — show while finger is on card */
+    /* Timeline logos: always visible on mobile (hover reveal is desktop-only) */
+    .timeline-content {
+        padding: 1.65rem 4.5rem 1.65rem 1.35rem;
+    }
+
     .timeline-logo-reveal {
         top: 1rem;
         right: 1rem;
         width: 50px;
         height: 50px;
-        opacity: 0;
-        transform: translate3d(0, 12px, 0) scale(0.9);
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        z-index: 3;
     }
 
     .timeline-logo-glow {
-        opacity: 0;
+        opacity: 0.5;
     }
 
-    .timeline-content.is-logo-active .timeline-logo-reveal,
-    .timeline-content:active .timeline-logo-reveal {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-
-    .timeline-content.is-logo-active .timeline-logo-glow,
-    .timeline-content:active .timeline-logo-glow {
-        opacity: 1;
-    }
-
-    .timeline-content.is-logo-active .timeline-logo-img:not(.timeline-logo-img--codsoft),
-    .timeline-content:active .timeline-logo-img:not(.timeline-logo-img--codsoft) {
-        animation: timelineLogoFloat 3.2s ease-in-out infinite;
-    }
-
-    .timeline-content.is-logo-active .timeline-logo-glass--codsoft,
-    .timeline-content:active .timeline-logo-glass--codsoft {
-        animation: timelineLogoFloat 3.2s ease-in-out infinite;
+    .timeline-content:hover .timeline-logo-img,
+    .timeline-content:hover .timeline-logo-glass--codsoft,
+    .timeline-item:hover .timeline-dot {
+        animation: none;
     }
 
     .site-footer-grid {
