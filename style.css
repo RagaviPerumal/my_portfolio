@@ -2281,15 +2281,17 @@ a {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
     box-sizing: border-box;
+    --timeline-rail: 0;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: var(--timeline-rail);
     top: 0;
     height: 100%;
     width: 2px;
+    transform: translateX(-50%);
     background: linear-gradient(to bottom, var(--glass-border) 10%, #fbbf24 40%, #fbbf24 80%, var(--glass-border));
 }
 
@@ -2300,10 +2302,11 @@ a {
 
 .timeline-dot {
     position: absolute;
-    left: -2.92rem;
+    left: calc(var(--timeline-rail) - 2.5rem);
     top: 5px;
     width: 14px;
     height: 14px;
+    transform: translateX(-50%);
     border-radius: 50%;
     background: #000000;
     border: 3px solid #fbbf24;
@@ -2312,7 +2315,7 @@ a {
 }
 
 .timeline-item:hover .timeline-dot {
-    transform: scale(1.35);
+    transform: translateX(-50%) scale(1.35);
     background: #fbbf24;
     box-shadow:
         0 0 20px rgba(251, 191, 36, 0.85),
@@ -2506,6 +2509,10 @@ a {
 
     .timeline-content:hover .timeline-logo-img {
         animation: none;
+    }
+
+    .timeline-dot {
+        transform: translate(-50%, 0);
     }
 }
 
@@ -2965,11 +2972,39 @@ svg {
     }
 
     .timeline {
-        padding-left: 1.85rem;
-        padding-right: 0.35rem;
+        --timeline-rail: 1rem;
+        padding-left: 2.5rem;
+        padding-right: 1rem;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+    }
+
+    .timeline::before {
+        left: var(--timeline-rail);
+        transform: translateX(-50%);
+    }
+
+    .timeline-dot {
+        left: var(--timeline-rail);
+        top: 1.1rem;
+        width: 12px;
+        height: 12px;
+        border-width: 2.5px;
+        transform: translate(-50%, 0);
+    }
+
+    .timeline-item:hover .timeline-dot {
+        transform: translate(-50%, 0) scale(1.25);
+    }
+
+    .timeline-content {
+        padding: 1.5rem 3.75rem 1.5rem 1.15rem;
+    }
+
+    .timeline-content .date {
+        white-space: nowrap;
+        font-size: 0.88rem;
     }
 
     .site-footer-grid {
