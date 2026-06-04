@@ -1317,6 +1317,28 @@
 }
 
 @media (max-width: 960px) {
+    .playground.lab-os {
+        padding: 6rem 1.15rem 5rem;
+    }
+
+    .lab-os-header {
+        margin-bottom: 2.25rem;
+        padding: 0 0.25rem;
+    }
+
+    .lab-os-header h2 {
+        font-size: clamp(1.85rem, 6vw, 2.5rem);
+    }
+
+    .lab-dashboard {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .lab-zone {
+        border-radius: 18px;
+    }
+
     .design-workspace {
         grid-template-columns: 1fr;
     }
@@ -1342,8 +1364,71 @@
         max-height: min(70vh, 640px);
     }
 
+    .os-window {
+        max-width: 100%;
+    }
+
     .lab-network {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .playground.lab-os {
+        padding-top: 5.5rem;
+    }
+
+    .lab-zone-head {
+        flex-wrap: wrap;
+        gap: 0.65rem;
+    }
+
+    .lab-zone-title {
+        font-size: 1.05rem;
+    }
+
+    .lab-zone-desc {
+        font-size: 0.78rem;
+    }
+
+    .lab-zone-pill {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .os-window-body {
+        padding: 0.85rem;
+    }
+
+    .cloud-status-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+    }
+
+    .spotify-screen-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .thulir-module,
+    .thulir-figma-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .cloud-status-row {
+        grid-template-columns: 1fr;
+    }
+
+    .lab-detail-link,
+    .lab-zone-head {
+        font-size: 0.72rem;
+    }
+
+    .poster-wall--two .poster-thumb img {
+        max-height: min(65vh, 520px);
     }
 }
 
