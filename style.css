@@ -2964,12 +2964,29 @@ svg {
         justify-content: center;
     }
 
+    /* Timeline: center dot on vertical line (mobile only — desktop unchanged) */
     .timeline {
-        padding-left: 1.85rem;
-        padding-right: 0.35rem;
+        --tl-line: 14px;
+        padding-left: 2.25rem;
+        padding-right: 1rem;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+    }
+
+    .timeline::before {
+        left: var(--tl-line);
+        transform: translateX(-50%);
+    }
+
+    .timeline-dot {
+        left: calc(var(--tl-line) - 2.25rem);
+        top: 1.1rem;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item:hover .timeline-dot {
+        transform: translateX(-50%) scale(1.25);
     }
 
     .site-footer-grid {
@@ -3079,5 +3096,14 @@ svg {
         box-shadow:
             inset 8px 0 0 #ffffff,
             inset -3px 0 0 #ffffff;
+    }
+
+    .timeline {
+        --tl-line: 12px;
+        padding-left: 2rem;
+    }
+
+    .timeline-dot {
+        left: calc(var(--tl-line) - 2rem);
     }
 }
