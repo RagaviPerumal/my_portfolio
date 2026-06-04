@@ -432,10 +432,6 @@ a {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
 }
 
-.navbar-row {
-    display: contents;
-}
-
 .navbar-brand {
     order: 1;
     display: inline-flex;
@@ -499,6 +495,10 @@ a {
 
 .nav-link:hover::after, .nav-link.active::after {
     width: 100%;
+}
+
+.nav-label-short {
+    display: none;
 }
 
 .navbar-resume-btn {
@@ -2734,107 +2734,87 @@ svg {
 
     .navbar-shell {
         display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
         width: 100% !important;
         max-width: 100% !important;
-        border-radius: 16px !important;
-        padding: 0.55rem 0.65rem 0.5rem !important;
-        gap: 0 !important;
-        overflow: hidden !important;
+        border-radius: 999px !important;
+        padding: 0.4rem 0.45rem 0.4rem 0.4rem !important;
+        gap: 0.2rem 0.35rem !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
         box-sizing: border-box !important;
     }
 
-    /* New layout: .navbar-row wrapper */
-    .navbar-row {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 0.5rem !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    /* Legacy layout (brand, menu, resume as direct children — live on GitHub) */
-    .navbar-shell:not(:has(.navbar-row)) {
-        display: grid !important;
-        grid-template-columns: 1fr auto !important;
-        grid-template-areas:
-            "brand resume"
-            "menu menu" !important;
-        align-items: center !important;
-    }
-
-    .navbar-shell:not(:has(.navbar-row)) > .navbar-brand {
-        grid-area: brand !important;
-        order: unset !important;
-        max-width: 100% !important;
-    }
-
-    .navbar-shell:not(:has(.navbar-row)) > .navbar-resume-btn {
-        grid-area: resume !important;
-        justify-self: end !important;
-        order: unset !important;
-        margin-left: 0 !important;
-    }
-
-    .navbar-shell:not(:has(.navbar-row)) > .navbar-menu {
-        grid-area: menu !important;
-        order: unset !important;
+    .navbar-shell::-webkit-scrollbar {
+        display: none;
     }
 
     .navbar-brand {
-        flex: 1 1 auto !important;
+        order: 1 !important;
+        flex: 0 0 auto !important;
         min-width: 0 !important;
+        gap: 0.45rem !important;
     }
 
     .navbar-brand-name {
-        font-size: 1.15rem !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        display: none !important;
     }
 
     .navbar-brand-icon {
-        width: 32px !important;
-        height: 32px !important;
+        width: 30px !important;
+        height: 30px !important;
         flex-shrink: 0 !important;
     }
 
-    .navbar-resume-btn {
-        flex: 0 0 auto !important;
-        margin-left: 0 !important;
-        padding: 0.5rem 0.95rem !important;
-        font-size: 0.84rem !important;
-        order: unset !important;
+    .navbar-menu {
+        order: 2 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex: 1 1 auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.15rem 0.35rem !important;
+        width: auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-top: none !important;
     }
 
-    .navbar-menu {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        width: 100% !important;
-        margin: 0.5rem 0 0 !important;
+    .navbar-resume-btn {
+        order: 3 !important;
+        flex: 0 0 auto !important;
         margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding: 0.55rem 0 0.2rem !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-sizing: border-box !important;
-        gap: 0 !important;
-        order: unset !important;
+        padding: 0.42rem 0.7rem !important;
+        font-size: 0.72rem !important;
+        white-space: nowrap !important;
     }
 
     .nav-link {
-        display: block !important;
+        display: inline-block !important;
+        width: auto !important;
         text-align: center !important;
-        width: 100% !important;
-        padding: 0.35rem 0.15rem !important;
-        font-size: clamp(0.68rem, 2.5vw, 0.86rem) !important;
+        padding: 0.28rem 0.32rem !important;
+        font-size: clamp(0.65rem, 2.4vw, 0.78rem) !important;
         white-space: nowrap !important;
+    }
+
+    .nav-label-full {
+        display: none !important;
+    }
+
+    .nav-label-short {
+        display: inline !important;
     }
 
     .hero {
         min-height: auto;
-        padding-top: calc(9rem + env(safe-area-inset-top, 0px)) !important;
+        padding-top: calc(5.25rem + env(safe-area-inset-top, 0px)) !important;
         padding-left: max(1rem, env(safe-area-inset-left)) !important;
         padding-right: max(1rem, env(safe-area-inset-right)) !important;
         padding-bottom: 4rem !important;
@@ -2965,6 +2945,36 @@ svg {
         text-align: center;
     }
 
+    /* Playground: .reveal stays opacity:0 on mobile if scroll observer misses */
+    .playground.lab-os {
+        overflow: visible !important;
+        min-height: auto !important;
+    }
+
+    .playground.lab-os .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    .lab-dashboard {
+        overflow: visible !important;
+        min-height: 120px;
+    }
+
+    .lab-workspace {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        width: 100% !important;
+    }
+
+    .lab-zone {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
     .design-workspace,
     .wifi-lab {
         grid-template-columns: 1fr !important;
@@ -2991,19 +3001,19 @@ svg {
 }
 
 @media (max-width: 480px) {
-    .navbar-brand-name {
-        font-size: 1rem !important;
-    }
-
     .nav-link {
-        font-size: clamp(0.58rem, 2.2vw, 0.72rem) !important;
-        padding: 0.3rem 0.06rem !important;
-        letter-spacing: -0.02em;
+        font-size: 0.62rem !important;
+        padding: 0.25rem 0.22rem !important;
     }
 
     .navbar-resume-btn {
-        padding: 0.45rem 0.7rem !important;
-        font-size: 0.76rem !important;
+        padding: 0.38rem 0.55rem !important;
+        font-size: 0.68rem !important;
+    }
+
+    .navbar-brand-icon {
+        width: 28px !important;
+        height: 28px !important;
     }
 
     .light-theme .experience {

@@ -2,126 +2,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     // 0. Mobile layout fallback (if responsive.css is cached/old)
     // -------------------------------------------------------------
-    const mobileNavEls = {
-        shell: document.querySelector('.navbar-shell'),
-        row: document.querySelector('.navbar-row'),
-        brand: document.querySelector('.navbar-brand'),
-        menu: document.querySelector('.navbar-menu'),
-        resume: document.querySelector('.navbar-resume-btn'),
-        hero: document.querySelector('.hero'),
-        heroGrid: document.querySelector('.hero-grid'),
-        heroText: document.querySelector('.hero-text'),
-        typingWrapper: document.querySelector('.typing-wrapper'),
-        typingText: document.querySelector('.typing-text'),
-    };
-
-    const mobileNavStyles = {
-        shell: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'stretch',
-            width: '100%',
-            maxWidth: '100%',
-            boxSizing: 'border-box',
-            borderRadius: '16px',
-            padding: '0.55rem 0.65rem 0.5rem',
-            gap: '0',
-            overflow: 'hidden',
-        },
-        row: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-            minWidth: '0',
-            gap: '0.5rem',
-        },
-        brand: {
-            flex: '1 1 auto',
-            minWidth: '0',
-        },
-        menu: {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-            width: '100%',
-            margin: '0.5rem 0 0',
-            marginLeft: '0',
-            marginRight: '0',
-            padding: '0.55rem 0 0.2rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.12)',
-            boxSizing: 'border-box',
-        },
-        resume: {
-            flex: '0 0 auto',
-            marginLeft: '0',
-        },
-        hero: {
-            paddingTop: 'calc(8rem + env(safe-area-inset-top, 0px))',
-            paddingLeft: 'max(1rem, env(safe-area-inset-left))',
-            paddingRight: 'max(1rem, env(safe-area-inset-right))',
-            boxSizing: 'border-box',
-        },
-        fullWidth: {
-            maxWidth: '100%',
-            width: '100%',
-            boxSizing: 'border-box',
-        },
-        typingText: {
-            display: 'block',
-            maxWidth: '100%',
-            width: '100%',
-            overflowWrap: 'break-word',
-            boxSizing: 'border-box',
-        },
-    };
-
     function applyMobileLayout() {
         const isMobile = window.innerWidth <= 900;
         document.documentElement.classList.toggle('is-mobile', isMobile);
 
-        const { shell, row, brand, menu, resume, hero, heroGrid, heroText, typingWrapper, typingText } = mobileNavEls;
-        if (!shell) return;
+        const hero = document.querySelector('.hero');
+        const heroGrid = document.querySelector('.hero-grid');
+        const heroText = document.querySelector('.hero-text');
+        const typingWrapper = document.querySelector('.typing-wrapper');
+        const typingText = document.querySelector('.typing-text');
 
-        const setStyles = (el, styles) => {
-            if (!el || !styles) return;
-            Object.entries(styles).forEach(([key, value]) => {
-                el.style[key] = value;
-            });
-        };
-
-        const clearStyles = (el) => {
-            if (!el) return;
-            el.removeAttribute('style');
-        };
+        const clear = (el) => el && el.removeAttribute('style');
 
         if (isMobile) {
-            setStyles(shell, mobileNavStyles.shell);
-            setStyles(row, mobileNavStyles.row);
-            setStyles(brand, mobileNavStyles.brand);
-            setStyles(menu, mobileNavStyles.menu);
-            setStyles(resume, mobileNavStyles.resume);
-            setStyles(hero, mobileNavStyles.hero);
-            setStyles(heroGrid, mobileNavStyles.fullWidth);
-            setStyles(heroText, mobileNavStyles.fullWidth);
-            setStyles(typingWrapper, mobileNavStyles.fullWidth);
-            setStyles(typingText, mobileNavStyles.typingText);
-            const brandName = document.querySelector('.navbar-brand-name');
-            if (brandName) {
-                brandName.style.whiteSpace = 'nowrap';
-                brandName.style.overflow = 'hidden';
-                brandName.style.textOverflow = 'ellipsis';
+            if (hero) {
+                hero.style.paddingTop = 'calc(5.25rem + env(safe-area-inset-top, 0px))';
+                hero.style.boxSizing = 'border-box';
+            }
+            [heroGrid, heroText, typingWrapper, typingText].forEach((el) => {
+                if (!el) return;
+                el.style.maxWidth = '100%';
+                el.style.width = '100%';
+                el.style.boxSizing = 'border-box';
+            });
+            if (typingText) {
+                typingText.style.display = 'block';
+                typingText.style.overflowWrap = 'break-word';
             }
             if (heroText) heroText.style.textAlign = 'center';
         } else {
-            [shell, row, brand, menu, resume, hero, heroGrid, heroText, typingWrapper, typingText].forEach(clearStyles);
-            const brandName = document.querySelector('.navbar-brand-name');
-            if (brandName) brandName.removeAttribute('style');
+            [hero, heroGrid, heroText, typingWrapper, typingText].forEach(clear);
         }
     }
 
     applyMobileLayout();
     window.addEventListener('resize', applyMobileLayout);
-    window.matchMedia('(max-width: 900px)').addEventListener('change', applyMobileLayout);
 
     // -------------------------------------------------------------
     // 1. Light/Dark Mode Toggle Switch Logic
@@ -508,19 +423,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initAboutLineReveal();
 
     const reveals = document.querySelectorAll('.reveal');
+    const isNarrowViewport = () => window.innerWidth <= 900;
+
+    function activateReveal(el) {
+        el.classList.add('active');
+    }
+
+    /* Playground must show on mobile — scroll reveal often never fires */
+    function ensurePlaygroundVisible() {
+        document.querySelectorAll('.playground.lab-os .reveal').forEach(activateReveal);
+    }
+
+    if (isNarrowViewport()) {
+        ensurePlaygroundVisible();
+    }
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+                activateReveal(entry.target);
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: isNarrowViewport() ? 0.02 : 0.1,
+        rootMargin: isNarrowViewport() ? '0px 0px 10% 0px' : '0px 0px -50px 0px'
     });
 
     reveals.forEach(element => revealObserver.observe(element));
+
+    window.addEventListener('resize', () => {
+        if (isNarrowViewport()) ensurePlaygroundVisible();
+    });
 
     // Stats counter animation
     const stats = document.querySelectorAll('.stat-number');

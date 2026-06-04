@@ -1,0 +1,566 @@
+/**
+ * Portfolio responsive layout
+ * Breakpoints: 1200px (tablet) | 900px (mobile) | 640px (phone) | 480px (small)
+ */
+
+/* ── Global ───────────────────────────────────────────── */
+html {
+    overflow-x: clip;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ── 1200px ───────────────────────────────────────────── */
+@media (max-width: 1200px) {
+    .hero-grid {
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+        gap: 2rem;
+    }
+
+    .glowing-orb {
+        transform: scale(0.85);
+    }
+}
+
+/* ── 900px (tablet & mobile) ─────────────────────────── */
+@media (max-width: 900px) {
+    /* Navbar — row 1: brand + resume | row 2: links grid */
+    .navbar {
+        padding: 0.6rem max(0.75rem, env(safe-area-inset-right)) 0.5rem max(0.75rem, env(safe-area-inset-left));
+        align-items: stretch;
+    }
+
+    /* Single-line navbar: icon | About Lab Exp | Resume */
+    .navbar-shell {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        border-radius: 999px !important;
+        padding: 0.4rem 0.45rem !important;
+        overflow-x: auto !important;
+    }
+
+    .navbar-brand-name {
+        display: none !important;
+    }
+
+    .navbar-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        border-top: none !important;
+        margin: 0 !important;
+        width: auto !important;
+    }
+
+    .nav-label-full {
+        display: none !important;
+    }
+
+    .nav-label-short {
+        display: inline !important;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: auto;
+        padding-top: calc(8rem + env(safe-area-inset-top, 0px)) !important;
+        padding-left: max(1rem, env(safe-area-inset-left)) !important;
+        padding-right: max(1rem, env(safe-area-inset-right)) !important;
+        padding-bottom: 4rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        gap: 2.5rem !important;
+        justify-items: center !important;
+    }
+
+    .hero-text {
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero-pretitle {
+        display: inline-block !important;
+        max-width: 100% !important;
+        padding-right: 2.75em !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+
+    .hero-text h1 {
+        text-align: center !important;
+    }
+
+    .about-text {
+        text-align: center !important;
+    }
+
+    .about-text h2 {
+        text-align: center !important;
+    }
+
+    .section-header {
+        text-align: center !important;
+    }
+
+    .site-footer-intro {
+        text-align: left;
+    }
+
+    .site-footer-links a {
+        display: block;
+        padding: 0.35rem 0;
+    }
+
+    .hero-image-frame {
+        max-width: min(380px, 100%) !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .photo-card {
+        min-height: 380px;
+    }
+
+    .hero-grid,
+    .hero-text,
+    .typing-wrapper,
+    .typing-text {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .typing-text {
+        display: block !important;
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+    }
+
+    /* Sections — shared padding */
+    .about,
+    .skills,
+    .playground.lab-os,
+    .experience,
+    .services,
+    .site-footer {
+        padding-left: max(1.15rem, env(safe-area-inset-left)) !important;
+        padding-right: max(1.15rem, env(safe-area-inset-right)) !important;
+    }
+
+    .section-header {
+        margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+        font-size: clamp(1.85rem, 6vw, 2.6rem);
+    }
+
+    .section-header p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    /* About */
+    .about {
+        padding-top: 6.5rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    .about-grid {
+        padding: 1.75rem 1.35rem !important;
+        border-radius: 20px !important;
+    }
+
+    .about-text p,
+    .about-para {
+        font-size: 1.02rem;
+    }
+
+    .stats-row {
+        flex-direction: column;
+        gap: 1.75rem;
+        text-align: center;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+    }
+
+    .stat-box h3 {
+        font-size: 2.2rem;
+    }
+
+    /* Skills */
+    .skills {
+        padding-top: 6rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr !important;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1.75rem;
+    }
+
+    .skill-category,
+    .skill-card-tilt {
+        padding: 2rem 1.35rem !important;
+    }
+
+    .tags {
+        justify-content: center;
+        gap: 0.75rem 0.65rem;
+    }
+
+    .skills .tech-tag {
+        font-size: 0.82rem;
+        padding: 0.45rem 0.9rem;
+    }
+
+    /* Experience */
+    .experience {
+        padding-top: 5rem !important;
+        padding-bottom: 6rem !important;
+    }
+
+    .timeline {
+        padding-left: 1.85rem;
+        padding-right: 0.35rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .timeline-item {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .timeline::before {
+        left: 8px;
+    }
+
+    .timeline-dot {
+        left: -1.2rem;
+    }
+
+    .timeline-content {
+        padding: 1.65rem 1.35rem;
+    }
+
+    .timeline-logo-reveal {
+        top: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        opacity: 0.85;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .timeline-logo-glow {
+        opacity: 0.5;
+    }
+
+    .timeline-content:hover .timeline-logo-img,
+    .timeline-item:hover .timeline-dot {
+        animation: none;
+    }
+
+    /* Marquee */
+    .marquee-content {
+        font-size: 1.65rem;
+    }
+
+    .services {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding-top: clamp(3rem, 8vw, 5rem) !important;
+    }
+
+    .site-footer-headline {
+        font-size: clamp(1.65rem, 7vw, 2.35rem);
+        max-width: none;
+    }
+
+    .site-footer-grid {
+        flex-direction: column;
+        gap: 2.25rem;
+    }
+
+    .site-footer-cluster {
+        margin-left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .site-footer-col {
+        width: 100%;
+    }
+
+    .site-footer-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .site-footer-resume-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    /* UI chrome */
+    .mode-toggle {
+        right: max(1rem, env(safe-area-inset-right));
+        bottom: max(1.25rem, env(safe-area-inset-bottom));
+        width: 50px;
+        height: 118px;
+    }
+
+    .glowing-orb {
+        opacity: 0.5;
+    }
+
+    .orb-1,
+    .orb-2,
+    .orb-3 {
+        width: min(280px, 50vw);
+        height: min(280px, 50vw);
+    }
+
+    /* Lab (playground) */
+    .playground.lab-os {
+        padding-top: 5.5rem !important;
+        padding-bottom: 5rem !important;
+        overflow: visible !important;
+    }
+
+    .playground.lab-os .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    .lab-dashboard,
+    .lab-workspace {
+        overflow: visible !important;
+        width: 100% !important;
+    }
+
+    .lab-os-header {
+        margin-bottom: 2.25rem;
+        text-align: center;
+    }
+
+    .lab-os-header h2 {
+        font-size: clamp(1.85rem, 6vw, 2.5rem);
+    }
+
+    .lab-os-header p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lab-dashboard {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .lab-zone {
+        border-radius: 18px;
+    }
+
+    .lab-zone-head {
+        flex-wrap: wrap;
+        gap: 0.65rem;
+    }
+
+    .lab-zone-pill {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .design-workspace,
+    .wifi-lab {
+        grid-template-columns: 1fr !important;
+    }
+
+    .cloud-status-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .poster-wall:not(.poster-wall--two) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .poster-wall--two {
+        grid-template-columns: 1fr;
+    }
+
+    .os-window {
+        max-width: 100%;
+    }
+
+    .lab-network {
+        display: none;
+    }
+
+    .thulir-module,
+    .thulir-figma-btn {
+        width: 100%;
+    }
+}
+
+/* ── 640px (phone) ───────────────────────────────────── */
+@media (max-width: 640px) {
+    .hero {
+        padding-top: calc(8.25rem + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 3.5rem !important;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(2.35rem, 11vw, 3.2rem) !important;
+    }
+
+    .hero-subtitle,
+    .typing-text {
+        font-size: 1rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .hero-peace-icon {
+        width: 2.6em !important;
+        height: 2.6em !important;
+        margin-left: -0.5em !important;
+    }
+
+    .hero-image-frame {
+        padding: 1.35rem !important;
+        border-radius: 28px !important;
+    }
+
+    .photo-card {
+        min-height: min(72vw, 340px) !important;
+        border-radius: 22px !important;
+    }
+
+    .about-grid {
+        padding: 1.5rem 1.15rem !important;
+    }
+
+    .about-text h2 {
+        font-size: clamp(1.65rem, 7vw, 2.2rem);
+    }
+
+    .skill-card-tilt h3 {
+        font-size: 1.2rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .marquee-content {
+        font-size: 1.35rem;
+    }
+
+    .site-footer-headline {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+    }
+
+    .lab-zone-title {
+        font-size: 1.05rem;
+    }
+
+    .os-window-body {
+        padding: 0.85rem;
+    }
+
+    .spotify-screen-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ── 480px (small phone) ─────────────────────────────── */
+@media (max-width: 480px) {
+    .hero {
+        padding-top: calc(5rem + env(safe-area-inset-top, 0px)) !important;
+    }
+
+    .hero-pretitle {
+        font-size: 1rem;
+        padding-right: 2.8em;
+    }
+
+    .about-grid {
+        padding: 1.35rem 1rem !important;
+    }
+
+    .stat-box h3 {
+        font-size: 1.9rem;
+    }
+
+    .timeline {
+        padding-left: 1.55rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.2rem;
+        padding-right: 0.25rem;
+    }
+
+    .timeline-logo-reveal {
+        width: 44px;
+        height: 44px;
+    }
+
+    .light-theme .experience {
+        box-shadow:
+            inset 8px 0 0 #ffffff,
+            inset -3px 0 0 #ffffff;
+    }
+
+    .cloud-status-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .poster-wall:not(.poster-wall--two) {
+        grid-template-columns: 1fr;
+    }
+
+    .poster-wall--two .poster-thumb img {
+        max-height: min(65vh, 520px);
+    }
+
+    .site-footer-email {
+        font-size: 0.95rem;
+        word-break: break-all;
+    }
+
+    .mode-toggle {
+        width: 46px;
+        height: 108px;
+    }
+}
