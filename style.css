@@ -516,6 +516,22 @@ a {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* CTA button for resume in Wi-Fi module */
+.site-cta-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #f6c94a;
+    color: #0b0b0b;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 6px;
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+.site-cta-btn:hover { background: #f0b400; }
+
 .navbar-resume-btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 10px 22px rgba(251, 191, 36, 0.45);
